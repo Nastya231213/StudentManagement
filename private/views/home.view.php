@@ -3,9 +3,12 @@
 
 <div class="container-fluid">
     <div class="mx-auto shadow rounded" style="width:100%;max-width:310px">
-
+             
     </div>
-
+<?php
+echo "<pre>";
+print_r($data);
+?>
 </div>
 
 

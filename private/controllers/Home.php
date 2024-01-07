@@ -4,7 +4,12 @@ class Home extends Controller{
 
     function index()
     {
-        $this->view("home");
+
+        $user=new User();
+        
+        $data=$user->findAll();
+        //$data=$user->where('first_name','alina');
+        $this->view("home",['rows'=>$data]);
         
     }
 }
