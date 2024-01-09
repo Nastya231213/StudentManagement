@@ -1,17 +1,9 @@
 
 <style>
-    nav ul li a{
-       
-        width:110px;
-        text-align:center;
-
-    }
-    nav ul li :hover{
+    nav ul li a:hover{
         background-color: grey;
         color:white!important;
     }
-    
-
 
 </style>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -32,14 +24,11 @@
                 <li class="nav-item">
                     <a class="nav-link" href="<?=ROOT?>/test">TESTS</a>
                 </li>
-            </ul>
-                <ul class="navbar-nav ms-auto">
-
-                <li class="nav-item dropdow dropdown-right">
+                <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                       USER
+                       <?=Auth::getFirst_name()?>
                     </a>
-                    <ul class="dropdown-menu dropdown-menu-end " aria-labelledby="navbarDropdownMenuLink">
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                         <li><a class="dropdown-item" href="<?=ROOT?>/profile">Profile</a></li>
                         <li><a class="dropdown-item" href="#">Dashboard</a></li>
                         <li><a class="dropdown-item" href="#">Logout</a></li>
