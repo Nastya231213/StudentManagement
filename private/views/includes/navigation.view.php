@@ -19,6 +19,12 @@
                     <a class="nav-link active" aria-current="page" href="<?=ROOT?>">DASHBOARD</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" href="<?=ROOT?>/schools">SCHOOLS</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="<?=ROOT?>/users">STAFF</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="<?=ROOT?>/classes">CLASSES</a>
                 </li>
                 <li class="nav-item">
@@ -31,7 +37,7 @@
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                         <li><a class="dropdown-item" href="<?=ROOT?>/profile">Profile</a></li>
                         <li><a class="dropdown-item" href="#">Dashboard</a></li>
-                        <li><a class="dropdown-item" href="#">Logout</a></li>
+                        <li><a class="dropdown-item" href="<?=ROOT?>/logout">Logout</a></li>
                     </ul>
                 </li>
             </ul>
