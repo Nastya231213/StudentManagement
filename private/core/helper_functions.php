@@ -1,10 +1,11 @@
 <?php
 
-function get_var($key){
+function get_var($key,$default=""){
 
       if(isset($_POST[$key])){
         return $_POST[$key];
       }
+      return $default;
 
 }
 
@@ -31,4 +32,10 @@ function esc($var){
   }
   return $text;
 
+}
+
+function get_date($date){
+
+
+  return date("jS F, Y",strtotime($date));
 }

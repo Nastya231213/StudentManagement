@@ -13,6 +13,8 @@ class User extends Model{
             'date'
       ];
 
+     
+
       public function validate($DATA){
             $this->errors=array();
             if(!preg_match('/^[a-zA-Z]*$/',$DATA['first_name'])|| empty($DATA['first_name']) ){

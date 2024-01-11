@@ -2,13 +2,15 @@
 
 class School extends Model
 {
-    protected $table = "users";
-    protected $beforeInsert = ['school','date'];
-    protected $allowedColumns = [
+    protected $table = "schools";
+    protected $allowedColumns = ['school', 'date'];
+    protected  $beforeInsert  = [
         'make_school_id',
-        'make_user_id'
+        'make_url_address'
     ];
-
+    protected $afterSelect = [
+        'get_user'
+    ];
     public function validate($DATA)
     {
         $this->errors = array();
@@ -23,7 +25,7 @@ class School extends Model
         return false;
     }
 
-    public function make_user_id($data)
+    public function make_url_address($data)
     {
 
         $data['url_address'] = random_string(60);
@@ -33,6 +35,16 @@ class School extends Model
     public function make_school_id($data)
     {
         $data['school_id'] =  random_string(60);
+        return $data;
+    }
+    public function get_user($data)
+    {
+        $user = new User();
+        foreach ($data as $key => $row) {
+            $result = $user->where('url_address', $row->url_address);
+            $data[$key]->user = $result[0];
+        }
+
         return $data;
     }
 }
