@@ -9,7 +9,7 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
         <a class="navbar-brand" href="#"> <img src="<?=ASSETS?>/logo.png" class="border border-primary rounded-circle" style="width:60px">
-            My School</a>
+           <?=Auth::getSchool_name();?></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -26,6 +26,9 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="<?=ROOT?>/classes">CLASSES</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="<?=ROOT?>/students">STUDENTS</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="<?=ROOT?>/test">TESTS</a>

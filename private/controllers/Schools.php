@@ -17,7 +17,8 @@ class Schools extends Controller
         $crumbs[]=['Schools','schools'];
 
         $this->view('schools', [
-            'rows' => $data
+            'rows' => $data,
+            'crumbs'=>$crumbs
         ]);
     }
     public function add()

@@ -27,7 +27,7 @@ class User extends Model{
                   $this->errors['password']="The passwords aren't equal";
             }
 
-            if($this->where('email',$DATA['email'])){
+            if(is_array($this->where('email',$DATA['email']))){
                   $this->errors['email']="That email is already in";
             }
             if(!filter_var($DATA['email'],FILTER_VALIDATE_EMAIL) || empty($DATA['email'])){

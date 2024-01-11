@@ -12,15 +12,17 @@ class Signup extends Controller
                 $_POST['date']=date("Y-m-d H:i:s");
 
                 $user->insert($_POST);
-                $this->redirect('login');
+                $this->redirect('users');
             } else {
                 //errors
                 $errors = $user->errors;
             }
         }
+        $all_modes=['users','students'];
+        $mode=isset($_GET['mode'])?$_GET['mode']:'';
         $this->view(
             'signup',
-            ['errors' => $errors]
+            ['errors' => $errors,'mode'=>$mode]
 
         );
     } 

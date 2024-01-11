@@ -39,3 +39,14 @@ function get_date($date){
 
   return date("jS F, Y",strtotime($date));
 }
+
+function get_image($row){
+  $image=$row->image;
+  if(!file_exists($image)){
+    $image=ASSETS."/user_female.png";
+    if($row->gender=='male'){
+        $image=ASSETS.'/user_male.png';
+    }
+  }
+  return $image;
+}

@@ -28,7 +28,9 @@ class School extends Model
     public function make_url_address($data)
     {
 
-        $data['url_address'] = random_string(60);
+        if(isset($_SESSION['USER']->url_address)){
+            $data['url_address'] = $_SESSION['USER']->url_address;
+        }
         return $data;
     }
 

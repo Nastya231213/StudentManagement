@@ -3,7 +3,7 @@
 
 
 <div class="container-fluid mx-auto shadow rounded" style="width:1000px;">
-    <?php $this->view('includes/crumbs'); ?>
+    <?php $this->view('includes/crumbs',['crumbs'=>$crumbs]); ?>
     <div class="card-group justify-content-center">
         <table class="table table-striped table-hover">
             <tr>
@@ -28,6 +28,9 @@
                             </a>
                             <a href="<?= ROOT ?>/schools/delete/<?= $row->id ?>">
                                 <button class="btn btn-sm btn-danger"><i class="fa fa-trash-alt"></i></button>
+                            </a>
+                            <a href="<?= ROOT ?>/switch_school/<?= $row->id ?>">
+                                <button class="btn btn-sm btn-success">Switch to<i class="fa fa-chevron-right"></i></button>
                             </a>
                         </td>
                     <tr>
