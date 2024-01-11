@@ -6,7 +6,7 @@
     <?php $this->view('includes/crumbs',['crumbs'=>$crumbs]); ?>
 
 <nav class="navbar navbar-light bg-light">
-<a href="<?= ROOT ?>/signup?mode=<?=$mode?>"><button class="btn btn-sm btn-primary"><i class="fa fa-plus"></i> Add New</button></a>
+<a href="<?= ROOT ?>/signup"><button type="button"class="btn btn-sm btn-primary"><i class="fa fa-plus"></i> Add New</button></a>
 
             <form class="form-inline">
                 <div class="input-group flex-nowrap">
