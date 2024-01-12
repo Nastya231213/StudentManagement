@@ -8,7 +8,7 @@ class Classes extends Controller{
         }
         $classes = new Classes_model();
 
-        $data = $classes->findAll();
+        $data = $classes->findAll('desc');
         $crumbs[]=['Dashboard','/'];
         $crumbs[]=['Classes','classes'];
 
@@ -50,7 +50,7 @@ class Classes extends Controller{
         if (!Auth::logged_in()) {
             $this->redirect('login');
         }
-        $classes = new School();
+        $classes = new Classes_model();
 
         $errors = array();
         if (count($_POST) > 0) {
@@ -75,7 +75,7 @@ class Classes extends Controller{
         if (!Auth::logged_in()) {
             $this->redirect('login');
         }
-        $classes = new School();
+        $classes = new Classes_model();
 
         $errors = array();
         if (count($_POST) > 0) {

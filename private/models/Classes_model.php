@@ -55,7 +55,6 @@ class Classes_model extends Model
             $result = $user->where('url_address', $row->url_address);
             $data[$key]->user = $result[0];
         }
-
         return $data;
     }
 }

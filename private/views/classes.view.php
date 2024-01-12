@@ -25,15 +25,16 @@
                 <?php foreach ($rows as $row) : ?>
                     <tr>
 
-                    <td><button class="btn btn-primary"><i class="fa fa-chevron-right"></i></button></td>
+                    <td>
+                        <a href="<?=ROOT?>/single_class/<?=$row->class_id?>"><button class="btn btn-primary"><i class="fa fa-chevron-right"></i></button></a></td>
                         <td><?= $row->class ?></td>
                         <td><?= $row->user->first_name?> <?= $row->user->last_name?></td>
                         <td><?= get_date($row->date) ?></td>
                         <td>
-                            <a href="<?= ROOT ?>/classes/edit/<?= $row->id ?>">
+                            <a href="<?=ROOT?>/classes/edit/<?= $row->id ?>">
                                 <button class="btn btn-sm btn-info"><i class="fa fa-edit"></i></button>
                             </a>
-                            <a href="<?= ROOT ?>/classes/delete/<?= $row->id ?>">
+                            <a href="<?= ROOT?>/classes/delete/<?= $row->id ?>">
                                 <button class="btn btn-sm btn-danger"><i class="fa fa-trash-alt"></i></button>
                             </a>
                       
