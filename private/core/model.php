@@ -20,7 +20,7 @@ class Model extends Database
             'value' => $value
         ]);
         if (is_array($data)) {
-            if (property_exists($this, 'afterWhere')) {
+            if (property_exists($this, 'afterSelect')) {
                 foreach ($this->afterSelect as $func) {
                     $data = $this->$func($data);
                 }

@@ -53,7 +53,11 @@ class User extends Model{
 
       public function make_user_id($data){
             
-            $data['url_address']= random_string(60);
+            $data['url_address']= strtolower($data['first_name'].'.'.$data['last_name']);
+            if(is_array($this->where('url_address',$data['url_address']))){
+                  $data['url_address'].=rand(100,9999);
+            }
+
             return $data;
       }
 
