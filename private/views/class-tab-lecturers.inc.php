@@ -24,5 +24,7 @@
             ?>
             <?php include(views_path('user')) ?>
         <?php endforeach; ?>
-    <?php endif; ?>
+        <?php else :?>
+        <h3>No lecturers were found here</h3>
+        <?php endif?>
 </div>

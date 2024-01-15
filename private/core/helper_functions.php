@@ -43,6 +43,7 @@ function get_date($date)
   return date("jS F, Y", strtotime($date));
 }
 
+
 function get_image($row)
 {
   $image = $row->image;

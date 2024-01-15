@@ -24,7 +24,7 @@ class Auth
         }
         return false;
     }
-
+    
     public static function user()
     {
         if (isset($_SESSION['USER'])) {
@@ -41,6 +41,11 @@ class Auth
         }
 
         return 'Unknown';
+    }
+    public static function getSchool_name(){
+        if(isset($_SESSION['USER'])){
+            return $_SESSION['USER']->school_name;
+        }
     }
 
     public static function switch_school($id){

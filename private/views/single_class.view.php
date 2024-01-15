@@ -27,7 +27,7 @@
         <div class="container-fluid">
             <ul class="nav nav-tabs">
                 <li class="nav-item">
-                    <a class="nav-link <?= $page_tab == 'lecturers' ? 'active' : '' ?>" aria-current="page" href="<?= ROOT ?>/single_class/<?= $row->class_id ?>?tab=lecturers&select">Lecturers</a>
+                    <a class="nav-link <?= $page_tab == 'lecturers' ? 'active' : '' ?>" aria-current="page" href="<?= ROOT ?>/single_class/<?= $row->class_id ?>?tab=lecturers">Lecturers</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link <?= $page_tab == 'students' ? 'active' : '' ?>" href="<?= ROOT ?>/single_class/<?= $row->class_id ?>?tab=students">Students</a>
@@ -57,6 +57,9 @@
                     break;
                 case 'students-add':
                     include(views_path('class-tab-students-add'));
+                    break;
+                case 'students-remove':
+                    include(views_path('class-tab-students-remove'));
                     break;
                 case 'tests-add':
                     $this->view(views_path('class-tab-tests-add'));

@@ -35,16 +35,10 @@ class Model extends Database
         $data= $this->query($query, [
             'value' => $value
         ]);
-        if (is_array($data)) {
-            if (property_exists($this, 'afterWhere')) { 
-                foreach ($this->afterSelect as $func) {
-                    $data = $this->$func($data);
-                }
-            }
-        }
         if(is_array($data)){
             $data=$data[0];
         }
+        
         return $data;
     }
 
