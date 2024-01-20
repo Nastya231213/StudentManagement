@@ -7,7 +7,7 @@ class App
     protected $params = array();
     function __construct()
     {
-        $URL = $this->getUrl();
+        $URL = $this->getURL();
         if (file_exists("../private/controllers/".$URL[0].".php")) {
             $this->controller = ucfirst($URL[0]);
             unset($URL[0]);

@@ -16,7 +16,7 @@ class Model extends Database
         $column = addslashes($column);
 
         $query = "select * from $this->table where $column=:value";
-        $data= $this->query($query, [
+        $data = $this->query($query, [
             'value' => $value
         ]);
         if (is_array($data)) {
@@ -28,21 +28,22 @@ class Model extends Database
         }
         return $data;
     }
-    public function whereOne($column,$value){
+    public function whereOne($column, $value)
+    {
         $column = addslashes($column);
 
         $query = "select * from $this->table where $column=:value";
-        $data= $this->query($query, [
+        $data = $this->query($query, [
             'value' => $value
         ]);
-        if(is_array($data)){
-            $data=$data[0];
+        if (is_array($data)) {
+            $data = $data[0];
         }
-        
+
         return $data;
     }
 
-    public function findAll($orderBy='asc')
+    public function findAll($orderBy = 'asc')
     {
         $query = "select * from $this->table order by id $orderBy";
 
@@ -86,7 +87,18 @@ class Model extends Database
     }
     public function update($id, $data)
     {
-
+        if (property_exists($this, 'allowedColumns')) {
+            foreach ($data as $key => $column) {
+                if (!in_array($key, $this->allowedColumns)) {
+                    unset($data[$key]);
+                }
+            }
+        }
+        if (property_exists($this, 'beforeUpdate')) {
+            foreach ($this->beforeUpdate as $func) {
+                $data = $this->$func($data);
+            }
+        }
         $data['id'] = $id;
         $str = "";
         foreach ($data as $key => $value) {

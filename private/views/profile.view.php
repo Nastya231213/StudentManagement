@@ -8,6 +8,16 @@
             <div class="col-sm-3 col-md-4">
                 <img src="<?= ASSETS ?>/user_male.png" class="d-block border border-dark mx-auto rounded-circle" style="width:100px;">
                 <h3 class="text-center"><?= esc($row->first_name) ?> <?= esc($row->last_name) ?></h3>
+                <br>
+                <div class="text-center">
+                    
+                <a href="<?= ROOT ?>/profile/edit/<?= $row->url_address ?>">
+                                <button class="btn btn-sm btn-success"><i class="fa fa-edit">Edit prfile</i></button>
+                            </a>
+                            <a href="<?= ROOT ?>/profile/delete/<?= $row->id ?>">
+                                <button class="btn btn-sm btn-danger">Delete</button>
+                            </a>
+                </div>
             </div>
             <div class="col-sm-9 col-md-8 bg-light p-2">
                 <table class="table table-hover table-striped table-bordered">
@@ -46,11 +56,11 @@
                 <li class="nav-item">
                     <a class="nav-link <?= $page_tab == 'info' ? 'active' : '' ?>" aria-current="page" href="<?= ROOT ?>/profile/<?= $row->url_address ?>">Basic Info</a>
                 </li>
-                <?php if(Auth::access('lecturer') ||Auth::i_own_content($row)):?>
-                <li class="nav-item">
-                    <a class="nav-link <?= $page_tab == 'classes' ? 'active' : '' ?>" href="<?= ROOT ?>/profile/<?= $row->url_address ?>?tab=classes">My Classes</a>
-                </li>
-                <?php endif;?>
+                <?php if (Auth::access('lecturer') || Auth::i_own_content($row)) : ?>
+                    <li class="nav-item">
+                        <a class="nav-link <?= $page_tab == 'classes' ? 'active' : '' ?>" href="<?= ROOT ?>/profile/<?= $row->url_address ?>?tab=classes">My Classes</a>
+                    </li>
+                <?php endif; ?>
                 <li class="nav-item">
                     <a class="nav-link <?= $page_tab == 'tests' ? 'active' : '' ?>" href="<?= ROOT ?>/profile/<?= $row->url_address ?>?tab=tests">Test</a>
                 </li>
@@ -62,10 +72,9 @@
                     include(views_path('profile-tab-info'));
                     break;
                 case 'classes':
-                    if(Auth::access('lecturer') || Auth::i_own_content($row)){
+                    if (Auth::access('lecturer') || Auth::i_own_content($row)) {
                         include(views_path('profile-tab-classes'));
-
-                    }else{
+                    } else {
                         include(views_path('access-denied'));
                     }
                     break;

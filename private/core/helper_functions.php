@@ -44,14 +44,18 @@ function get_date($date)
 }
 
 
-function get_image($row)
-{
-  $image = $row->image;
-  if (!file_exists($image)) {
+function get_image($image,$gender)
+{ 
+
+  if (!file_exists("../private/uploads/".$image)) {
     $image = ASSETS . "/user_female.png";
-    if ($row->gender == 'male') {
+    if ($gender == 'male') {
+      ;
       $image = ASSETS . '/user_male.png';
     }
+  }else{
+    $class_image=new Image();
+    $image=$class_image->profile_thumb("../private/uploads/".$image);
   }
   return $image;
 }

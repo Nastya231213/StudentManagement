@@ -29,7 +29,6 @@ class Database
             }
         }
 
-      
         if (is_array($result)) {
             if (property_exists($this, 'afterSelect')) {
                 foreach ($this->afterSelect as $func) {
