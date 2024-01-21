@@ -47,7 +47,7 @@ function get_date($date)
 function get_image($image,$gender)
 { 
 
-  if (!file_exists("../private/uploads/".$image)) {
+  if (!file_exists("../private/uploads/".$image) ||empty($image)) {
     $image = ASSETS . "/user_female.png";
     if ($gender == 'male') {
       ;

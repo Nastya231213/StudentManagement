@@ -24,7 +24,7 @@
                 <input class="btn btn-warning" type="submit" value="Cancel">
             </a>
             <?php else:?>
-            The class wasn't found!
+           <center> The class wasn't found!</center>
 
                 <?php endif;?>
         </form>

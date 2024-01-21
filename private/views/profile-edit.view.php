@@ -13,7 +13,7 @@
             <div class="row">
 
                 <div class="col-sm-3 col-md-4 ">
-                    <img src="<?=$image?>" class="d-block border border-dark mx-auto" style="width:120px;" />
+                    <img src="<?=$image?>" class="d-block border border-dark mx-auto rounded-circle" style="width:150px;" />
                     <h3 class="text-center mt-2"><?= esc($row->first_name) ?> <?= esc($row->last_name) ?></h3>
                     <br>
                     <div class="text-center">

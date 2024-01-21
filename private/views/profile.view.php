@@ -10,13 +10,14 @@
                 <h3 class="text-center"><?= esc($row->first_name) ?> <?= esc($row->last_name) ?></h3>
                 <br>
                 <div class="text-center">
-                    
+                <?php if(Auth::access('admin') || Auth::access('reception')) || Auth::i_own_content($row)?>
                 <a href="<?= ROOT ?>/profile/edit/<?= $row->url_address ?>">
                                 <button class="btn btn-sm btn-success"><i class="fa fa-edit">Edit prfile</i></button>
                             </a>
                             <a href="<?= ROOT ?>/profile/delete/<?= $row->id ?>">
                                 <button class="btn btn-sm btn-danger">Delete</button>
                             </a>
+                            <?php endif;?>
                 </div>
             </div>
             <div class="col-sm-9 col-md-8 bg-light p-2">
