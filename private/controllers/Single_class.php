@@ -18,9 +18,9 @@ class Single_class extends Controller
             $row_user = $user->whereOne('url_address', $row->url_address);
         }
 
-        $limit=10;
-        $pager=new Pager($limit);
-        $offset=$pager->offset;
+        $limit = 10;
+        $pager = new Pager($limit);
+        $offset = $pager->offset;
         $page_tab = isset($_GET['tab']) ? $_GET['tab'] : 'lecturers';
         $results = false;
 
@@ -81,7 +81,7 @@ class Single_class extends Controller
                 if (isset($_POST['selected'])) {
                     $query = "select id, disabled from class_lecturers where user_id=:user_id && class_id=:class_id limit 1";
                     $check = $lect->query($query, ['user_id' => $_POST['selected'], 'class_id' => $id]);
-             
+
                     if (!$check) {
                         $arr = array();
                         $arr['class_id'] = $id;
@@ -91,16 +91,14 @@ class Single_class extends Controller
                         $lect->insert($arr);
                         $this->redirect('single_class/' . $id . '?tab=lecturers');
                     } else {
-                      
-                        if(isset($check[0]->disabled) && $check[0]->disabled){
-                                $arr = array();
-                                $arr['disabled'] = 0;
-                                $lect->update($check[0]->id,$arr);
-                                $this->redirect('single_class/' . $id . '?tab=lecturers');
-                          
-                        }else{
-                            $errors[] = "the lecturer is in this class";
 
+                        if (isset($check[0]->disabled) && $check[0]->disabled) {
+                            $arr = array();
+                            $arr['disabled'] = 0;
+                            $lect->update($check[0]->id, $arr);
+                            $this->redirect('single_class/' . $id . '?tab=lecturers');
+                        } else {
+                            $errors[] = "the lecturer is in this class";
                         }
                     }
                 }
@@ -161,16 +159,15 @@ class Single_class extends Controller
                         $student->insert($arr);
                         $this->redirect('single_class/' . $id . '?tab=students');
                     } else {
-                        if(isset($check[0]->disabled) && $check[0]->disabled){
+                        if (isset($check[0]->disabled) && $check[0]->disabled) {
                             $arr = array();
                             $arr['disabled'] = 0;
-                            $student->update($check[0]->id,$arr);
+                            $student->update($check[0]->id, $arr);
                             $this->redirect('single_class/' . $id . '?tab=lecturers');
-                      
-                    }else{
-                        $errors[] = "the student is in this class";
-
-                    }                    }
+                        } else {
+                            $errors[] = "the student is in this class";
+                        }
+                    }
                 }
             }
         }
@@ -284,6 +281,47 @@ class Single_class extends Controller
                 }
             }
         }
+
+
+        $data['row'] = $row;
+        $data['crumbs'] = $crumbs;
+        $data['results'] = $results;
+        $data['page_tab'] = $page_tab;
+        $data['row_user'] = $row_user;
+        $data['errors'] = $errors;
+
+        $this->view('single_class', $data);
+    }
+
+    function testadd($id = '')
+    {
+        $user = new User();
+        $classes = new Classes_model();
+        $test = new Tests_model();
+        $errors = array();
+
+        $row = $classes->whereOne('class_id', $id);
+        $page_tab = 'test-add';
+
+        $crumbs[] = ['Dashboard', '/'];
+        $crumbs[] = ['Tests', 'testsclasse'];
+        if ($row) {
+            $crumbs[] = [$row->class, ''];
+            $row_user = $user->whereOne('url_address', $row->url_address);
+        }
+        $results = array();
+        if (count($_POST) > 0) {
+            //add lecturer
+            $arr = array();
+            $arr['class_id'] = $id;
+            $arr['disabled'] = 0;
+            $arr['description']=$_POST['description'];
+            $arr['test']=$_POST['test'];
+            $arr['date'] = date("Y-m-d H:i:s");
+            $test->insert($arr);
+            $this->redirect('single_class/' . $id . '?tab=tests');
+        }
+
 
 
         $data['row'] = $row;
