@@ -35,6 +35,13 @@ class Single_class extends Controller
             $students = $lect->query($query, ['class_id' => $id]);
 
             $data['students'] = $students;
+        }else if($page_tab=='tests'){
+            
+            $query="select * from tests where class_id=:class_id && disabled=0 order by id desc limit $limit offset $offset";
+            $tests=$lect->query($query,['class_id'=>$id]);
+      
+            $data['tests'] = $tests;
+
         }
 
         $data['row'] = $row;

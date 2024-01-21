@@ -11,9 +11,10 @@
             </th>
 
         </tr>
-        <?php if (isset($rows) && is_array($rows) && count($rows) > 0) : ?>
+        <?php echo count($tests)?>
+        <?php if (isset($tests) && is_array($tests) && count($tests) > 0) : ?>
 
-            <?php foreach ($rows as $row) : ?>
+            <?php foreach ($tests as $row) : ?>
                 <tr>
 
                     <td>

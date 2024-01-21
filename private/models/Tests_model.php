@@ -38,7 +38,7 @@ class Tests_model extends Model
 
     public function make_test_id($data)
     {
-        $data['class_id'] =  random_string(60);
+        $data['test_id'] =  random_string(60);
         return $data;
     }
     public function make_school_id($data)
